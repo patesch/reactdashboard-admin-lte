@@ -1,0 +1,23 @@
+.icon-right-side {
+    position: relative;
+    right: -110px;
+}
+
+.main-footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.sidebar-collapse .menuitem--label,
+.sidebar-collapse .treeview--label {
+    display: none;
+}
+
+.table-actions {
+    width: 110px
+}
+
+.btn { 
+    margin-left: 5px;
+}
