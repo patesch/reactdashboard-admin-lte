@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { logout } from "../../auth/authActions"
+import { md5 as pMD5 } from '../libs/crypt'
 
 class Navbar extends Component {
     constructor(props) {
@@ -15,8 +16,8 @@ class Navbar extends Component {
 
     render() {
         const { name, email } = this.props.user
-        const gravatar = 'http://i.pravatar.cc/300'
-
+        const email_hash = this.props.pMD5(email)
+        const gravatar = `https://www.gravatar.com/avatar/${email_hash}?d=mm`
         return (
             <div className="navbar-custom-menu">
                 <ul className="nav navbar-nav">
@@ -59,6 +60,6 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = state => ({ user: state.auth.user })
+const mapStateToProps = state => ({ user: state.auth.user, pMD5 })
 const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
